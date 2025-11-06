@@ -1,0 +1,16 @@
+{
+  "build": {
+    "builder": "NIXPACKS"
+  },
+  "nixpacks": {
+    "phases": {
+      "setup": {
+        "nixPkgs": [
+          "php.withExtensions (pe: with pe; [ pdo_pgsql ])",
+          "nginx",
+          "libpq"
+        ]
+      }
+    }
+  }
+}
