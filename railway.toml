@@ -1,8 +1,10 @@
 [build]
 builder = "nixpacks"
-buildCommand = "composer install"
+# buildCommand = "composer install" # Biarkan Nixpacks menangani instalasi Composer
 
 [deploy]
-postDeployCommand = "php artisan migrate --force"
+# HAPUS BARIS INI (atau pastikan tidak ada) karena migrasi ada di startCommand
+# postDeployCommand = "php artisan migrate --force" 
 
-startCommand = "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+# GANTI BARIS INI dengan perintah lengkap:
+startCommand = "chmod -R 775 storage bootstrap/cache || true && php artisan storage:link && php artisan migrate --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=$PORT"

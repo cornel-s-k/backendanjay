@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash; // Wajib di-import untuk Hash::make()
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // 1. Buat user admin@elsa.id
+        User::create([
+            'name' => 'Elsa Admin',
+            'email' => 'admin@elsa.id',
+            // Wajib menggunakan Hash::make() agar password tersimpan terenkripsi
+            'password' => Hash::make('password'), 
+            // Tambahkan field lain jika ada (misal: 'is_admin' => true)
         ]);
+        
     }
 }
