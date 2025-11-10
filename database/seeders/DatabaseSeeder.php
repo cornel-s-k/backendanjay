@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@elsa.id',
             // Wajib menggunakan Hash::make() agar password tersimpan terenkripsi
             'password' => Hash::make('password'), 
+            'is_admin' => true,
             // Tambahkan field lain jika ada (misal: 'is_admin' => true)
         ]);
         
